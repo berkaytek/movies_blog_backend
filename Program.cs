@@ -10,7 +10,7 @@ var config = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: true)
         .AddCommandLine(args)
-        .Build();;
+        .Build(); ;
 
 // Add services to the container.
 
@@ -20,6 +20,12 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<MoviesDatabaseContext>(options =>
     options.UseNpgsql(config.GetSection("ConnectionStrings:PostgreDatabase").Value)
 );
+//Cors
+
+builder.Services.AddCors(p => p.AddPolicy("CorsConfig", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 // Dependency injections
 builder.Services.AddScoped<IMoviesService, MoviesService>();
@@ -40,6 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("CorsConfig");
 
 app.MapControllers();
 

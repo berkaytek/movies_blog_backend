@@ -13,7 +13,6 @@ public class MoviesControllerTests
     private  Mock<MoviesService> _mockMovieService;
     private Mock<MoviesDatabaseContext> _mockContext;
 
-
     [SetUp]
     public void Setup()
     {
