@@ -7,28 +7,28 @@ using Microsoft.AspNetCore.Mvc;
 namespace movies_blog_backend.Services;
 public class MoviesService : IMoviesService
 {
-    private readonly MoviesDatabaseContext _context;
-    public MoviesService(MoviesDatabaseContext context)
+    private readonly MovieDatabaseMainContext _context;
+    public MoviesService(MovieDatabaseMainContext context)
     {
         _context = context;
     }
     
-    public async Task<List<MovieMetadataBase>> getAllMovieData()
+    public async Task<List<MovieBase>> getAllMovieData()
     {
-        var movie_metaDatas = new List<MovieMetadataBase>();
-        movie_metaDatas =  await _context.MovieMetadata
-        .Select(e=>new MovieMetadataBase(e.Homepage, e.Id, e.PosterPath, e.Title))
+        var movies = new List<MovieBase>();
+        movies =  await _context.Movies
+        .Select(e=>new MovieBase(e.Id, e.Title, e.Genres, e.PosterPath))
         .ToListAsync();
-        return movie_metaDatas ;
+        return movies ;
     }
 
-    public async Task<List<MovieMetadataBase>> getMovieDataByStartAndEndIndex(int startIndex,  int endIndex){
-        var movie_metaDatas = _context.MovieMetadata
+    public async Task<List<MovieBase>> getMovieDataByStartAndEndIndex(int startIndex,  int endIndex){
+        var movie_metaDatas = _context.Movies
         .AsQueryable()
         .AsNoTracking()
         .Skip(startIndex)
         .Take(endIndex - startIndex + 1)
-        .Select(e=>new MovieMetadataBase(e.Homepage, e.Id, e.PosterPath, e.Title))
+        .Select(e=>new MovieBase(e.Id, e.Title, e.Genres, e.PosterPath))
         .ToListAsync();
         return await movie_metaDatas;
     }

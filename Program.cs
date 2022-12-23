@@ -17,7 +17,7 @@ var config = new ConfigurationBuilder()
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-builder.Services.AddDbContext<MoviesDatabaseContext>(options =>
+builder.Services.AddDbContext<MovieDatabaseMainContext>(options =>
     options.UseNpgsql(config.GetSection("ConnectionStrings:PostgreDatabase").Value)
 );
 //Cors

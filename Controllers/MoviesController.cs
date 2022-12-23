@@ -17,10 +17,10 @@ public class MoviesController : ControllerBase
 
     //for testing & checking data only
     [HttpGet]
-    public async Task<List<MovieMetadataBase>> GetAllMovies() => await _movieService.getAllMovieData();
+    public async Task<List<MovieBase>> GetAllMovies() => await _movieService.getAllMovieData();
 
     [HttpGet]
-    public async Task<List<MovieMetadataBase>> GetMoviesByStartAndEndIndex([FromQuery] int startIndex, [FromQuery] int endIndex) => await _movieService.getMovieDataByStartAndEndIndex(startIndex,endIndex);
+    public async Task<List<MovieBase>> GetMoviesByStartAndEndIndex([FromQuery] int startIndex, [FromQuery] int endIndex) => await _movieService.getMovieDataByStartAndEndIndex(startIndex,endIndex);
 
 }
 //([FromQuery] int startIndex, [FromQuery] int endIndex)

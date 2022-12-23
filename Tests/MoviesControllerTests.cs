@@ -11,15 +11,15 @@ public class MoviesControllerTests
 {
     private MoviesController _mockMovieController;
     private  Mock<MoviesService> _mockMovieService;
-    private Mock<MoviesDatabaseContext> _mockContext;
+    private Mock<MovieDatabaseMainContext> _mockContext;
 
     [SetUp]
     public void Setup()
     {
         // setup db context
-        var mockContext = new Mock<MoviesDatabaseContext>();
-        var mockDbSet = new Mock<DbSet<MovieMetadatum>>();
-        _mockContext.Setup(c => c.MovieMetadata).Returns(mockDbSet.Object);
+        var mockContext = new Mock<MovieDatabaseMainContext>();
+        var mockDbSet = new Mock<DbSet<Movie>>();
+        _mockContext.Setup(c => c.Movies).Returns(mockDbSet.Object);
         // setup service
         _mockMovieService = new Mock<MoviesService>(_mockContext);
         
@@ -31,15 +31,15 @@ public class MoviesControllerTests
     public async Task TestGetMovieData()
     {
         // Arrange the test
-        var movieMetadatas = new List<MovieMetadataBase>();
+        var movieDatas = new List<MovieBase>();
 
         // act
-         movieMetadatas = await _mockMovieController.GetMoviesByStartAndEndIndex(0,5);
+         movieDatas = await _mockMovieController.GetMoviesByStartAndEndIndex(0,5);
 
         // assert
 
-        Assert.IsNotNull(movieMetadatas);
-        Assert.AreEqual(5,movieMetadatas.Count());
+        Assert.IsNotNull(movieDatas);
+        Assert.AreEqual(5,movieDatas.Count());
 
     }
 }

@@ -1,82 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using movies_blog_backend.Models;
 
+using movies_blog_backend.Models;
 namespace movies_blog_backend.Repositories.Contexts;
 
-public partial class MoviesDatabaseContext : DbContext
+
+
+public partial class MovieDatabaseMainContext : DbContext
 {
-    public MoviesDatabaseContext()
+    public MovieDatabaseMainContext()
     {
     }
 
-    public MoviesDatabaseContext(DbContextOptions<MoviesDatabaseContext> options)
+    public MovieDatabaseMainContext(DbContextOptions<MovieDatabaseMainContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<MovieMetadatum> MovieMetadata { get; set; }
+    public virtual DbSet<Movie> Movies { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=192.168.1.40; Database=movies_database; Username=root; Password=root");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseNpgsql("Host=localhost; Database=movie_database_main; Username=root; Password=root");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<MovieMetadatum>(entity =>
+        modelBuilder.Entity<Movie>(entity =>
         {
-            entity.HasNoKey();
+            entity
+                .HasNoKey()
+                .ToTable("movies");
 
-            entity.Property(e => e.Adult)
+            entity.Property(e => e.BackdropPath)
                 .HasColumnType("character varying")
-                .HasColumnName("adult");
-            entity.Property(e => e.BelongsToCollection)
+                .HasColumnName("backdrop_path");
+            entity.Property(e => e.Budget).HasColumnName("budget");
+            entity.Property(e => e.Credits)
                 .HasColumnType("character varying")
-                .HasColumnName("belongs_to_collection");
-            entity.Property(e => e.Budget)
-                .HasColumnType("character varying")
-                .HasColumnName("budget");
+                .HasColumnName("credits");
             entity.Property(e => e.Genres)
                 .HasColumnType("character varying")
                 .HasColumnName("genres");
-            entity.Property(e => e.Homepage)
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Keywords)
                 .HasColumnType("character varying")
-                .HasColumnName("homepage");
-            entity.Property(e => e.Id)
-                .HasColumnType("character varying")
-                .HasColumnName("id");
-            entity.Property(e => e.ImdbId)
-                .HasColumnType("character varying")
-                .HasColumnName("imdb_id");
+                .HasColumnName("keywords");
             entity.Property(e => e.OriginalLanguage)
                 .HasColumnType("character varying")
                 .HasColumnName("original_language");
-            entity.Property(e => e.OriginalTitle)
-                .HasColumnType("character varying")
-                .HasColumnName("original_title");
             entity.Property(e => e.Overview)
                 .HasColumnType("character varying")
                 .HasColumnName("overview");
-            entity.Property(e => e.Popularity)
-                .HasColumnType("character varying")
-                .HasColumnName("popularity");
+            entity.Property(e => e.Popularity).HasColumnName("popularity");
             entity.Property(e => e.PosterPath)
                 .HasColumnType("character varying")
                 .HasColumnName("poster_path");
             entity.Property(e => e.ProductionCompanies)
                 .HasColumnType("character varying")
                 .HasColumnName("production_companies");
-            entity.Property(e => e.ProductionCountries)
+            entity.Property(e => e.Recommendations)
                 .HasColumnType("character varying")
-                .HasColumnName("production_countries");
-            entity.Property(e => e.ReleaseDate)
-                .HasColumnType("character varying")
-                .HasColumnName("release_date");
+                .HasColumnName("recommendations");
+            entity.Property(e => e.ReleaseDate).HasColumnName("release_date");
             entity.Property(e => e.Revenue).HasColumnName("revenue");
             entity.Property(e => e.Runtime).HasColumnName("runtime");
-            entity.Property(e => e.SpokenLanguages)
-                .HasColumnType("character varying")
-                .HasColumnName("spoken_languages");
             entity.Property(e => e.Status)
                 .HasColumnType("character varying")
                 .HasColumnName("status");
@@ -86,7 +74,6 @@ public partial class MoviesDatabaseContext : DbContext
             entity.Property(e => e.Title)
                 .HasColumnType("character varying")
                 .HasColumnName("title");
-            entity.Property(e => e.Video).HasColumnName("video");
             entity.Property(e => e.VoteAverage).HasColumnName("vote_average");
             entity.Property(e => e.VoteCount).HasColumnName("vote_count");
         });
