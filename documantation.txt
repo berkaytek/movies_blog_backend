@@ -21,3 +21,8 @@ dotnet ef dbcontext scaffold "Host=localhost; Database=movies_database; Username
 
 8- ) For good practices, I do my logic in services instead of controller and try to keep controller functions readable and short.
 
+9- ) At this point you can easily add new methods in service and publish them in controller
+
+Optional - I highly recommend removing any fields without id and also without any posterPath using SQL query:
+    
+

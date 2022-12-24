@@ -5,5 +5,6 @@ public interface IMoviesService
 {
     public Task<List<MovieBase>> getAllMovieData();
     public  Task<List<MovieBase>> getMovieDataByStartAndEndIndex(int startIndex, int endIndex);
+    public  Task<int> GetTotalMovieCount() ;
 
 }

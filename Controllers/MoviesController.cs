@@ -22,5 +22,7 @@ public class MoviesController : ControllerBase
     [HttpGet]
     public async Task<List<MovieBase>> GetMoviesByStartAndEndIndex([FromQuery] int startIndex, [FromQuery] int endIndex) => await _movieService.getMovieDataByStartAndEndIndex(startIndex,endIndex);
 
+    [HttpGet]
+    public async Task<int> GetMoviesTotalCount() => await _movieService.GetTotalMovieCount();
 }
 //([FromQuery] int startIndex, [FromQuery] int endIndex)

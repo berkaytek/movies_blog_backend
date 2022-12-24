@@ -26,10 +26,14 @@ public class MoviesService : IMoviesService
         var movie_metaDatas = _context.Movies
         .AsQueryable()
         .AsNoTracking()
+        .OrderByDescending(x => x.Id)
         .Skip(startIndex)
         .Take(endIndex - startIndex + 1)
         .Select(e=>new MovieBase(e.Id, e.Title, e.Genres, e.PosterPath))
         .ToListAsync();
         return await movie_metaDatas;
     }
+
+    public async Task<int> GetTotalMovieCount() => await _context.Movies.CountAsync();
+    
 }
