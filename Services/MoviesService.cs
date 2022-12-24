@@ -17,7 +17,7 @@ public class MoviesService : IMoviesService
     {
         var movies = new List<MovieBase>();
         movies =  await _context.Movies
-        .Select(e=>new MovieBase(e.Id, e.Title, e.Genres, e.PosterPath))
+        .Select(e=>new MovieBase(e.Id, e.Title, e.Genres, e.PosterPath, e.Overview))
         .ToListAsync();
         return movies ;
     }
@@ -29,7 +29,7 @@ public class MoviesService : IMoviesService
         .OrderByDescending(x => x.Id)
         .Skip(startIndex)
         .Take(endIndex - startIndex + 1)
-        .Select(e=>new MovieBase(e.Id, e.Title, e.Genres, e.PosterPath))
+        .Select(e=>new MovieBase(e.Id, e.Title, e.Genres, e.PosterPath, e.Overview))
         .ToListAsync();
         return await movie_metaDatas;
     }

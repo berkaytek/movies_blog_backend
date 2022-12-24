@@ -8,11 +8,7 @@ using movies_blog_backend.Models;
 
 public partial class Movie:MovieBase
 {
-
-
     public string OriginalLanguage { get; set; } = null!;
-
-    public string? Overview { get; set; }
 
     public decimal Popularity { get; set; }
 
@@ -37,8 +33,6 @@ public partial class Movie:MovieBase
     public string? Credits { get; set; }
 
     public string? Keywords { get; set; }
-
-    public string? PosterPath { get; set; }
 
     public string? BackdropPath { get; set; }
 
