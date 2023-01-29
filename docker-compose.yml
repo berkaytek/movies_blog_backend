@@ -1,0 +1,4 @@
+version: '3.7'
+services:
+  user_service:
+    build: ./user_service
