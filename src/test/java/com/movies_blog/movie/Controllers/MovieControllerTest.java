@@ -101,7 +101,7 @@ class MovieControllerTest {
         for (Movie movie : movies) {
             movieModels.add(movieAssembler.toModel(movie));
         }
-        ;
+
 
         CollectionModel<EntityModel<Movie>> expected = CollectionModel.of(movieModels,
                 linkTo(methodOn(MovieController.class).getAll()).withSelfRel());

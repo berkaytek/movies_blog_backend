@@ -1,46 +1,38 @@
 package com.movies_blog.movie.Controllers;
 
 import com.movies_blog.movie.Models.Movie;
-import com.movies_blog.movie.Models.MovieModelAssembler;
-import com.movies_blog.movie.Repository.Exceptions.MovieNotFoundException;
-import com.movies_blog.movie.Repository.MovieRepository;
+import com.movies_blog.movie.Services.Interfaces.IMovieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 public class MovieController {
-    private final MovieRepository repository;
-    private final MovieModelAssembler movieAssembler;
 
-    public MovieController(MovieRepository repository, MovieModelAssembler movieAssembler) {
-        this.movieAssembler = movieAssembler;
-        this.repository = repository;
+    private final IMovieService movieService;
+
+    @Autowired
+    public MovieController(IMovieService movieService) {
+        this.movieService = movieService;
     }
 
-    @GetMapping("/movies")
+    @GetMapping("/movies/all")
+    @ResponseBody
     public CollectionModel<EntityModel<Movie>> getAll() {
-        List<EntityModel<Movie>> moviesWithLinks = repository
-                .findAll()
-                .stream()
-                .map(movie -> movieAssembler.toModel(movie))
-                .collect(Collectors.toList());
-        return CollectionModel.of(moviesWithLinks, linkTo(methodOn(MovieController.class).getAll()).withSelfRel());
+        return movieService.getAllMovies();
+    }
+
+    @GetMapping("/movies/get")
+    @ResponseBody
+    public CollectionModel<EntityModel<Movie>> getMoviesByStartAndEndIndex(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "20") int itemPerPage) {
+        return movieService.getMoviesByStartAndEndIndex(pageNumber, itemPerPage);
     }
 
     @GetMapping("/movies/{id}")
     public EntityModel<Movie> getOneMovie(@PathVariable Long id) {
-        Movie movie = repository.findById(id).orElseThrow(() -> new MovieNotFoundException(id));
-        return movieAssembler.toModel(movie);
+        return movieService.getMovieById(id);
     }
 
 }
