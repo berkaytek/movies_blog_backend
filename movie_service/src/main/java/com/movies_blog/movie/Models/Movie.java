@@ -1,5 +1,6 @@
 package com.movies_blog.movie.Models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -17,22 +18,22 @@ public class Movie {
         this.id = id;
         this.title = title;
         this.genres = genres;
-        this.original_language = original_language;
+        this.originalLanguage = original_language;
         this.overview = overview;
         this.popularity = popularity;
-        this.production_companies = production_companies;
-        this.release_date = release_date;
+        this.productionCompanies = production_companies;
+        this.releaseDate = release_date;
         this.budget = budget;
         this.revenue = revenue;
         this.runtime = runtime;
         this.status = status;
         this.tagline = tagline;
-        this.vote_average = vote_average;
-        this.vote_count = vote_count;
+        this.voteAverage = vote_average;
+        this.voteCount = vote_count;
         this.credits = credits;
         this.keywords = keywords;
-        this.poster_path = poster_path;
-        this.backdrop_path = backdrop_path;
+        this.posterPath = poster_path;
+        this.backdropPath = backdrop_path;
         this.recommendations = recommendations;
     }
 
@@ -40,22 +41,29 @@ public class Movie {
     private Integer id;
     private String title;
     private String genres;
-    private String original_language;
+    @Column(name = "original_language")
+    private String originalLanguage;
     private String overview;
     private Float popularity;
-    private String production_companies;
-    private Date release_date;
+    @Column(name = "production_companies")
+    private String productionCompanies;
+    @Column(name = "release_date")
+    private Date releaseDate;
     private Double budget;
     private Double revenue;
     private Double runtime;
     private String status;
     private String tagline;
-    private Double vote_average;
-    private Double vote_count;
+    @Column(name = "vote_average")
+    private Double voteAverage;
+    @Column(name = "vote_count")
+    private Double voteCount;
     private String credits;
     private String keywords;
-    private String poster_path;
-    private String backdrop_path;
+    @Column(name = "poster_path")
+    private String posterPath;
+    @Column(name = "backdrop_path")
+    private String backdropPath;
     private String recommendations;
 
     public Integer getId() {
@@ -83,12 +91,12 @@ public class Movie {
         this.genres = genres;
     }
 
-    public String getOriginal_language() {
-        return original_language;
+    public String getOriginalLanguage() {
+        return originalLanguage;
     }
 
-    public void setOriginal_language(String original_language) {
-        this.original_language = original_language;
+    public void setOriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
     }
 
     public String getOverview() {
@@ -107,20 +115,20 @@ public class Movie {
         this.popularity = popularity;
     }
 
-    public String getProduction_companies() {
-        return production_companies;
+    public String getProductionCompanies() {
+        return productionCompanies;
     }
 
-    public void setProduction_companies(String production_companies) {
-        this.production_companies = production_companies;
+    public void setProductionCompanies(String productionCompanies) {
+        this.productionCompanies = productionCompanies;
     }
 
-    public Date getRelease_date() {
-        return release_date;
+    public Date getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(Date release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public Double getBudget() {
@@ -163,20 +171,20 @@ public class Movie {
         this.tagline = tagline;
     }
 
-    public Double getVote_average() {
-        return vote_average;
+    public Double getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setVote_average(Double vote_average) {
-        this.vote_average = vote_average;
+    public void setVoteAverage(Double voteAverage) {
+        this.voteAverage = voteAverage;
     }
 
-    public Double getVote_count() {
-        return vote_count;
+    public Double getVoteCount() {
+        return voteCount;
     }
 
-    public void setVote_count(Double vote_count) {
-        this.vote_count = vote_count;
+    public void setVoteCount(Double voteCount) {
+        this.voteCount = voteCount;
     }
 
     public String getCredits() {
@@ -195,20 +203,20 @@ public class Movie {
         this.keywords = keywords;
     }
 
-    public String getPoster_path() {
-        return poster_path;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
-    public String getBackdrop_path() {
-        return backdrop_path;
+    public String getBackdropPath() {
+        return backdropPath;
     }
 
-    public void setBackdrop_path(String backdrop_path) {
-        this.backdrop_path = backdrop_path;
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
 
     public String getRecommendations() {
@@ -225,22 +233,22 @@ public class Movie {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", genres='" + genres + '\'' +
-                ", original_language='" + original_language + '\'' +
+                ", original_language='" + originalLanguage + '\'' +
                 ", overview='" + overview + '\'' +
                 ", popularity=" + popularity +
-                ", production_companies='" + production_companies + '\'' +
-                ", release_date=" + release_date +
+                ", production_companies='" + productionCompanies + '\'' +
+                ", release_date=" + releaseDate +
                 ", budget=" + budget +
                 ", revenue=" + revenue +
                 ", runtime=" + runtime +
                 ", status='" + status + '\'' +
                 ", tagline='" + tagline + '\'' +
-                ", vote_average=" + vote_average +
-                ", vote_count=" + vote_count +
+                ", vote_average=" + voteAverage +
+                ", vote_count=" + voteCount +
                 ", credits='" + credits + '\'' +
                 ", keywords='" + keywords + '\'' +
-                ", poster_path='" + poster_path + '\'' +
-                ", backdrop_path='" + backdrop_path + '\'' +
+                ", poster_path='" + posterPath + '\'' +
+                ", backdrop_path='" + backdropPath + '\'' +
                 ", recommendations='" + recommendations + '\'' +
                 '}';
     }

@@ -1,5 +1,6 @@
-package com.movies_blog.movie.Repository.Exceptions;
+package com.movies_blog.movie.Repository.Exceptions.Advices;
 
+import com.movies_blog.movie.Repository.Exceptions.MovieNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,7 +12,7 @@ public class MovieNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(MovieNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String MovieNotFoundAdvice(MovieNotFoundException ex){
-        return  ex.getMessage();
+    String MovieNotFoundAdvice(MovieNotFoundException ex) {
+        return ex.getMessage();
     }
 }
