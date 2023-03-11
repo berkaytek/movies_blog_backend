@@ -1,6 +1,7 @@
 package com.movies_blog.movie.Controllers;
 
 import com.movies_blog.movie.Models.Movie;
+import com.movies_blog.movie.Models.MovieCount;
 import com.movies_blog.movie.Services.Interfaces.IMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 public class MovieController {
 
     private final IMovieService movieService;
@@ -26,8 +28,14 @@ public class MovieController {
 
     @GetMapping("/movies/get")
     @ResponseBody
-    public CollectionModel<EntityModel<Movie>> getMoviesByStartAndEndIndex(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "20") int itemPerPage) {
-        return movieService.getMoviesByStartAndEndIndex(pageNumber, itemPerPage);
+    public CollectionModel<EntityModel<Movie>> getMoviesByStartAndEndIndex(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "20") int itemPerPage, @RequestParam(defaultValue = "id", required = false) String sortBy, @RequestParam(defaultValue = "ascending", required = false) String direction) {
+        return movieService.getMoviesByStartAndEndIndex(pageNumber, itemPerPage, sortBy, direction);
+    }
+
+    @GetMapping("/movies/count")
+    @ResponseBody
+    public EntityModel<MovieCount> getCountOfMovies() {
+        return movieService.getMovieCount();
     }
 
     @GetMapping("/movies/{id}")
