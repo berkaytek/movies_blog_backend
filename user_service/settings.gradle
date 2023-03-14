@@ -1,0 +1,6 @@
+rootProject.name = 'movie_userservice'
+include 'movies_common'
+
+
+// Set the path to the movies_common subproject
+project(':movies_common').projectDir = new File(settingsDir, '../movies_common')

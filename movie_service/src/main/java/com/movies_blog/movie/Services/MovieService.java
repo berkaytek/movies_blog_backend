@@ -1,11 +1,11 @@
 package com.movies_blog.movie.Services;
 
+import com.movies_blog.common.Entities.Movie;
+import com.movies_blog.common.Entities.MovieCount;
 import com.movies_blog.movie.Controllers.MovieController;
-import com.movies_blog.movie.Models.Movie;
-import com.movies_blog.movie.Models.MovieCount;
 import com.movies_blog.movie.Models.MovieModelAssembler;
-import com.movies_blog.movie.Repository.Exceptions.MovieNotFoundException;
-import com.movies_blog.movie.Repository.MovieRepository;
+import com.movies_blog.movie.Repositories.Exceptions.MovieNotFoundException;
+import com.movies_blog.movie.Repositories.MovieRepository;
 import com.movies_blog.movie.Services.Interfaces.IMovieService;
 import com.movies_blog.movie.Services.Interfaces.IMovieSorterService;
 import org.springframework.data.domain.PageRequest;

@@ -1,6 +1,4 @@
-package com.movies_blog.movie.Repository.Exceptions;
-
-import org.springframework.web.bind.annotation.ControllerAdvice;
+package com.movies_blog.movie.Repositories.Exceptions;
 
 public class MovieNotFoundException extends RuntimeException{
     public MovieNotFoundException(Long id){

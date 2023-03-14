@@ -1,7 +1,7 @@
 package com.movies_blog.movie.Controllers;
 
-import com.movies_blog.movie.Models.Movie;
-import com.movies_blog.movie.Models.MovieCount;
+import com.movies_blog.common.Entities.Movie;
+import com.movies_blog.common.Entities.MovieCount;
 import com.movies_blog.movie.Services.Interfaces.IMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;

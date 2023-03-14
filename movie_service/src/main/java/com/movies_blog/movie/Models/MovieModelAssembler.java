@@ -1,5 +1,6 @@
 package com.movies_blog.movie.Models;
 
+import com.movies_blog.common.Entities.Movie;
 import com.movies_blog.movie.Controllers.MovieController;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;

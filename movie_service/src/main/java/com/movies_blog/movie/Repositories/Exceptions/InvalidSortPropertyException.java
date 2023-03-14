@@ -1,4 +1,4 @@
-package com.movies_blog.movie.Repository.Exceptions;
+package com.movies_blog.movie.Repositories.Exceptions;
 
 public class InvalidSortPropertyException extends RuntimeException {
     public InvalidSortPropertyException(String sortByPropertyName) {

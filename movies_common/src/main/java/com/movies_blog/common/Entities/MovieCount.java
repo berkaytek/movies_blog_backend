@@ -1,4 +1,4 @@
-package com.movies_blog.movie.Models;
+package com.movies_blog.common.Entities;
 
 public class MovieCount {
     private Long count;

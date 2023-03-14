@@ -1,7 +1,7 @@
 package com.movies_blog.movie.Services;
 
-import com.movies_blog.movie.Models.Movie;
-import com.movies_blog.movie.Repository.Exceptions.InvalidSortPropertyException;
+import com.movies_blog.common.Entities.Movie;
+import com.movies_blog.movie.Repositories.Exceptions.InvalidSortPropertyException;
 import com.movies_blog.movie.Services.Interfaces.IMovieSorterService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package com.movies_blog.movie.Controllers;
 
-import com.movies_blog.movie.Models.Movie;
+import com.movies_blog.common.Entities.Movie;
 import com.movies_blog.movie.Models.MovieModelAssembler;
-import com.movies_blog.movie.Repository.MovieRepository;
+import com.movies_blog.movie.Repositories.MovieRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

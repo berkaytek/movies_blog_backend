@@ -1,0 +1,65 @@
+# Ignore all Gradle and Maven build directories
+*/build/
+*/target/
+
+# Ignore IntelliJ IDEA project files
+.idea/
+
+# Ignore Eclipse project files
+.classpath
+.project
+.settings/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore application properties files
+*.properties
+*.yml
+*.yaml
+*.env
+
+# Ignore log files
+*.log
+*.log.*
+
+# Ignore IntelliJ IDEA files
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
+
+# Ignore user-specific files
+*.iml
+*.iws
+*.ipr
+*.log
+*.properties
+*.classpath
+*.project
+*.settings
+
+# Ignore temporary files
+*.swp
+*.swo
+
+# Ignore Maven wrapper files
+.gradle/
+mvnw
+mvnw.cmd
+!mvnw_help.txt
+
+# Ignore Spring Boot DevTools property file
+META-INF/spring-devtools.properties
+
+# Ignore generated code
+target/generated-sources/
+target/generated-test-sources/
+build/generated/
+build/generated-test-sources/
+
+# Ignore user uploads
+uploads/
+
