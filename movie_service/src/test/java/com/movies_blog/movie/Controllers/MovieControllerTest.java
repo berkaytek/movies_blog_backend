@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class MovieControllerTest {
 
-    private MockMvc mockMvc;
+    /*private MockMvc mockMvc;
 
     @Mock
     private MovieRepository repository;
@@ -41,7 +41,7 @@ class MovieControllerTest {
     @InjectMocks
     private MovieController controller;
 
-    private List<Movie> movies;
+    private List<Movie> movies; */
 
     /*@BeforeEach
     public void setUp() {
