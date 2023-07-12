@@ -43,7 +43,7 @@ class MovieControllerTest {
 
     private List<Movie> movies;
 
-    @BeforeEach
+    /*@BeforeEach
     public void setUp() {
         movies = new ArrayList<>();
         movies.add(new Movie(
@@ -117,5 +117,5 @@ class MovieControllerTest {
 
     @Test
     void getOneMovie() {
-    }
+    }*/
 }

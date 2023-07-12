@@ -9,6 +9,13 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 targetCompatibility = '17'
 
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
 
 repositories {
     mavenCentral()
@@ -28,3 +35,28 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+task createScripts {
+    group = 'Build'
+    description = 'Creates the shell and batch scripts to run the application'
+    doLast {
+        def jarFile = "${buildDir}/libs/${project.name}-${version}.jar"
+
+        // Create the scripts directory if it doesn't exist
+        def scriptsDir = new File("${buildDir}/scripts")
+        if (!scriptsDir.exists()) {
+            scriptsDir.mkdirs()
+        }
+
+        // Create the shell script
+        def shScript = new File(scriptsDir, "run.sh")
+        shScript.text = "#!/bin/sh\njava -jar ${jarFile}\n"
+        shScript.setExecutable(true)
+
+        // Create the batch script
+        def batScript = new File(scriptsDir, "run.bat")
+        batScript.text = "@echo off\njava -jar ${jarFile}\n"
+    }
+}
+
+build.dependsOn createScripts
